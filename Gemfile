@@ -45,5 +45,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'annotate', '~> 3.1'
 gem 'figaro', '~> 1.2'
 gem 'simplecov', require: false, group: :test
