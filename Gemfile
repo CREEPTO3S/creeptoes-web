@@ -46,3 +46,4 @@ group :development do
 end
 
 gem 'figaro', '~> 1.2'
+gem 'simplecov', require: false, group: :test
