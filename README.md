@@ -3,7 +3,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -134,14 +133,12 @@ Project Link: [https://github.com/CREEPTO3S/creeptoes-web](https://github.com/CR
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[forks-shield]: https://img.shields.io/github/forks/CREEPTO3S/creeptoes-web?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/CREEPTO3S/creeptoes-web
 [forks-url]: https://github.com/CREEPTO3S/creeptoes-web/network/members
-[stars-shield]: https://img.shields.io/github/stars/CREEPTO3S/creeptoes-web?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/CREEPTO3S/creeptoes-web
 [stars-url]: https://github.com/CREEPTO3S/creeptoes-web/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CREEPTO3S/creeptoes-web?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/CREEPTO3S/creeptoes-web
 [issues-url]: https://github.com/CREEPTO3S/creeptoes-web/issues
-[license-shield]: https://img.shields.io/github/license/CREEPTO3S/creeptoes-web?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/CREEPTO3S/creeptoes-web
 [license-url]: https://github.com/CREEPTO3S/creeptoes-web/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/daivasmara/
 [product-screenshot]: images/screenshot.png
