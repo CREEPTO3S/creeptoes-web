@@ -47,6 +47,8 @@ end
 
 gem 'annotate', '~> 3.1'
 gem 'figaro', '~> 1.2'
+gem 'jsonapi-serializer'
+gem 'jwt', '~> 2.2'
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 gem 'simplecov', require: false, group: :test
