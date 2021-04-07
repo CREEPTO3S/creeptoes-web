@@ -1,4 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn eslint
+cowsay yarn eslint --fix
+yarn eslint --fix
+
+cowsay bundle exec rubocop -a
+bundle exec rubocop -a
