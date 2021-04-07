@@ -46,7 +46,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -55,35 +54,27 @@
 
 Cryptocurrencies investment porfolio has always been a somewhat troublesome task to manage due to the nature of it being decentralized.
 The more coins you _hodl_ the more complicated it becomes, ERC-20, BEP-2, DOT, FTM, etc. Various chains demands various wallets, but it was all still pretty manageable
-thanks to awesome multichain wallets such as metamask, ledger and trezor.
+thanks to many awesome multichain wallets such as metamask, ledger and trezor.
 
 But now... 
 
-With DeFi in steroids, Andre Cronje pushing codes every minute. It's not only about coin prices, but we gotta take into accounts the APY from staking, LP, AMMs, and all those amazing
-stuffs. It's getting more and more impossible to answer this simple question, *"How much all of my coins worth now?"*
+With DeFi in steroids, Andre Cronje pushing codes every minute. It's not only about coin valuation, but we gotta take into accounts the APY from staking, LP, AMMs, and all those amazing
+stuffs. It's getting more and more impossible to answer this simple question, *"How much does all of my coins worth now?"*
 
 Thus, **CREEPTOES** is born.
 
 ### Built With
 
-* [Ruby on Rails](https://rubyonrails.org/)
-* [React](https://reactjs.org/)
-* [RSpec](https://rspec.info/)
-* [Jest](https://jestjs.io/)
+* [Ruby on Rails v6.1.3](https://rubyonrails.org/)
+* [React v17.0.2](https://reactjs.org/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 ### Prerequisites
-
-* Yarn
-  ```sh
-  npm i -g yarn
-  ```
-* PostgreSQL
-  ```sh
-  docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
-  ```
+* [Ruby v2.7.0](https://rvm.io/)
+* [Node v14.16.0](https://github.com/nvm-sh/nvm)
+* [PostgreSQL v13.2](https://www.postgresql.org/)
 
 ### Installation
 
@@ -99,6 +90,10 @@ Thus, **CREEPTOES** is born.
    ```sh
    yarn
    ```
+4. Init Figaro
+   ```sh
+   bundle exec figaro install
+   ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -106,6 +101,10 @@ Thus, **CREEPTOES** is born.
 * Rails
   ```sh
   ./bin/rails s
+  ```
+* RSpec
+  ```sh
+  ./bin/rspec
   ```
 
 <!-- CONTRIBUTING -->
