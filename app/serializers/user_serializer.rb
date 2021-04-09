@@ -16,5 +16,7 @@
 #
 class UserSerializer
   include JSONAPI::Serializer
+
+  has_many :user_coins
   attributes :username, :email
 end
