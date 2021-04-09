@@ -49,6 +49,7 @@ gem 'annotate', '~> 3.1'
 gem 'figaro', '~> 1.2'
 gem 'jsonapi-serializer'
 gem 'jwt', '~> 2.2'
+gem 'knock', git: 'https://github.com/nsarno/knock', branch: 'master', ref: '9214cd027422df8dc31eb67c60032fbbf8fc100b'
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 gem 'simplecov', require: false, group: :test

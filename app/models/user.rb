@@ -23,4 +23,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password_confirmation, presence: true
+
+  def self.from_token_payload(payload)
+    find_by(id: payload['data']['id'])
+  end
 end

@@ -1,6 +1,8 @@
 module Api
   module V1
     class CoinController < ApplicationController
+      before_action :authenticate_user
+
       def create
         coin = Coin.new(coin_params)
 

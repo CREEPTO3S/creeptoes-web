@@ -28,7 +28,6 @@ RSpec.describe 'Api::V1::Auths', type: :request do
       post api_v1_auth_login_path
 
       expect(response).to have_http_status(:unauthorized)
-      expect(JSON.parse(response.body)['errors']).to include('Invalid login')
     end
 
     it 'response with error messages when sent non existing user' do
@@ -40,7 +39,6 @@ RSpec.describe 'Api::V1::Auths', type: :request do
       }
 
       expect(response).to have_http_status(:unauthorized)
-      expect(JSON.parse(response.body)['errors']).to include('Invalid login')
     end
   end
 

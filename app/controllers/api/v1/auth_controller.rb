@@ -9,7 +9,7 @@ module Api
 
           render json: { **serialized_user, token: JwtService.encode(serialized_user) }
         else
-          render json: { errors: ['Invalid login'] }, status: :unauthorized
+          head :unauthorized
         end
       end
 
