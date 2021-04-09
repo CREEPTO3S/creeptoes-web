@@ -17,6 +17,6 @@
 class UserSerializer
   include JSONAPI::Serializer
 
-  has_many :user_coins
+  has_many :user_coins, if: proc { |record| record.user_coins.any? }
   attributes :username, :email
 end
