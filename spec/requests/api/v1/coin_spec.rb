@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 def authenticated_header(user)
-  token = Knock::AuthToken.new(payload: { data: { id: user.id } }).token
+  token = Knock::AuthToken.new(payload: { id: user.id }).token
 
   { Authorization: "Bearer #{token}" }
 end

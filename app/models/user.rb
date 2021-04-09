@@ -25,6 +25,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   def self.from_token_payload(payload)
-    find_by(id: payload['data']['id'])
+    find_by(id: payload['id'])
   end
 end

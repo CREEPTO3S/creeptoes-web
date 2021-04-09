@@ -7,7 +7,10 @@ module Api
         if user.present? && user.authenticate(login_params[:password])
           serialized_user = UserSerializer.new(user).serializable_hash
 
-          render json: { **serialized_user, token: JwtService.encode(serialized_user) }
+          render json: {
+            **serialized_user,
+            token: JwtService.encode({ id: user.id, username: user.username, email: user.email })
+          }
         else
           head :unauthorized
         end
