@@ -4,12 +4,10 @@ RSpec.describe 'Api::V1::Auths', type: :request do
   describe 'POST /login' do
     before do
       User.create(
-        {
-          username: 'user',
-          email: 'user@gmail.com',
-          password: '123456',
-          password_confirmation: '123456'
-        }
+        username: 'user',
+        email: 'user@gmail.com',
+        password: '123456',
+        password_confirmation: '123456'
       )
     end
 
@@ -74,12 +72,10 @@ RSpec.describe 'Api::V1::Auths', type: :request do
 
     it 'response with error messages when sent signed up user' do
       User.create(
-        {
-          username: 'user',
-          email: 'user@gmail.com',
-          password: '123456',
-          password_confirmation: '123456'
-        }
+        username: 'user',
+        email: 'user@gmail.com',
+        password: '123456',
+        password_confirmation: '123456'
       )
 
       post api_v1_auth_signup_path, params: {

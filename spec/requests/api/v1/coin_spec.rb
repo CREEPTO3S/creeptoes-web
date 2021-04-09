@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Coins', type: :request do
   describe 'POST /' do
     before do
-      Coin.create({ symbol: 'SYM', name: 'coin-name' })
+      Coin.create(symbol: 'SYM', name: 'coin-name')
     end
 
     it 'response with coin' do
