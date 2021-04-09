@@ -15,6 +15,9 @@
 #  index_users_on_username  (username) UNIQUE
 #
 class User < ApplicationRecord
+  has_many :user_coins, dependent: :destroy
+  has_many :coins, through: :user_coins
+
   has_secure_password
 
   validates :username, presence: true, uniqueness: true
