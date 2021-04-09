@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
       get 'coin', to: 'coin#index'
       post 'coin', to: 'coin#create'
+      delete 'coin', to: 'coin#destroy'
     end
   end
 

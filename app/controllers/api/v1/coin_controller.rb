@@ -9,24 +9,36 @@ module Api
 
       def create
         ActiveRecord::Base.transaction do
-          coin = Coin.new(symbol: coin_params[:symbol], name: coin_params[:name])
-          user_coin = UserCoin.new(user: current_user, coin: coin, amount: params[:amount])
+          coin = Coin.find_by(symbol: coin_params[:symbol], name: coin_params[:name])
 
-          coin.save!
-          user_coin.save!
+          unless coin
+            coin = Coin.new(symbol: coin_params[:symbol], name: coin_params[:name])
+            coin.save!
+          end
+
+          user_coin = UserCoin.find_by(user: current_user, coin: coin)
+
+          unless user_coin
+            user_coin = UserCoin.new(user: current_user, coin: coin, amount: params[:amount])
+            user_coin.save!
+          end
+
+          user_coin.update(amount: params[:amount])
         end
 
         render json: serialized_user, status: :created
       rescue ActiveRecord::RecordInvalid => e
+        render json: { errors: [e] }, status: :unprocessable_entity
+      end
+
+      def destroy
         coin = Coin.find_by(symbol: coin_params[:symbol], name: coin_params[:name])
         user_coin = UserCoin.find_by(user: current_user, coin: coin)
 
-        if user_coin&.update(amount: params[:amount])
-          render json: serialized_user, status: :created
-        elsif user_coin&.errors
-          render json: { errors: user_coin.errors.full_messages }, status: :unprocessable_entity
+        if user_coin&.destroy
+          head :no_content
         else
-          render json: { errors: [e] }, status: :unprocessable_entity
+          render json: { errors: ['Delete failed'] }, status: :unprocessable_entity
         end
       end
 

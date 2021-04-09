@@ -63,8 +63,10 @@ RSpec.describe 'Api::V1::Coins', type: :request do
       expect(response).to have_http_status(:unprocessable_entity)
       expect(JSON.parse(response.body)['errors']).to include("Validation failed: Symbol can't be blank, Name can't be blank")
     end
+  end
 
-    it 'response with error messages when sent empty amount' do
+  describe 'DELETE /' do
+    it 'response with head no_content' do
       post api_v1_coin_path, headers: authenticated_header(user), params: {
         coin: {
           symbol: 'SYM',
@@ -73,7 +75,18 @@ RSpec.describe 'Api::V1::Coins', type: :request do
         amount: 500.5
       }
 
-      post api_v1_coin_path, headers: authenticated_header(user), params: {
+      delete api_v1_coin_path, headers: authenticated_header(user), params: {
+        coin: {
+          symbol: 'SYM',
+          name: 'coin-name'
+        }
+      }
+
+      expect(response).to have_http_status(:no_content)
+    end
+
+    it 'response with error messages when sent non-existing combination of coin symbol and name' do
+      delete api_v1_coin_path, headers: authenticated_header(user), params: {
         coin: {
           symbol: 'SYM',
           name: 'coin-name'
@@ -81,7 +94,6 @@ RSpec.describe 'Api::V1::Coins', type: :request do
       }
 
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body)['errors']).to include("Amount can't be blank")
     end
   end
 end
