@@ -20,7 +20,6 @@ RSpec.describe User, type: :model do
   describe 'Validations' do
     it 'raises error when username is empty' do
       user = described_class.create({ email: 'test@gmail.com', password: '123456', password_confirmation: '123456' })
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
@@ -29,14 +28,12 @@ RSpec.describe User, type: :model do
       described_class.create({ username: 'username', email: 'test@gmail.com', password: '123456', password_confirmation: '123456' })
 
       user = described_class.create({ username: 'username', email: 'unique@gmail.com', password: '123456', password_confirmation: '123456' })
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
 
     it 'raises error when email is empty' do
       user = described_class.create({ username: 'username', password: '123456', password_confirmation: '123456' })
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
@@ -45,21 +42,18 @@ RSpec.describe User, type: :model do
       described_class.create({ username: 'username', email: 'test@gmail.com', password: '123456', password_confirmation: '123456' })
 
       user = described_class.create({ username: 'uniqueusername', email: 'test@gmail.com', password: '123456', password_confirmation: '123456' })
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
 
     it 'raises error when email format is not correct' do
       user = described_class.create({ username: 'username', email: 'test', password: '123456', password_confirmation: '123456' })
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
 
     it 'raises error when password_confirmation is empty' do
       user = described_class.create({ username: 'username', email: 'test@gmail.com', password: '123456' })
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
@@ -68,7 +62,6 @@ RSpec.describe User, type: :model do
       user = described_class.create(
         { username: 'username', email: 'test@gmail.com', password: '123456', password_confirmation: 'wrongpassword' }
       )
-      user.save
 
       expect(user.errors.any?).to eq(true)
     end
@@ -77,7 +70,6 @@ RSpec.describe User, type: :model do
       user = described_class.create(
         { username: 'username', email: 'test@gmail.com', password: '123456', password_confirmation: '123456' }
       )
-      user.save
 
       expect(user.errors.any?).to eq(false)
     end
