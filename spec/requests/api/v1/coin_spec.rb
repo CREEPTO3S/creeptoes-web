@@ -9,6 +9,15 @@ end
 RSpec.describe 'Api::V1::Coins', type: :request do
   let(:user) { User.create(username: 'username', email: 'test@gmail.com', password: '123456', password_confirmation: '123456') }
 
+  describe 'GET /' do
+    it 'response with user coins' do
+      get api_v1_coin_path, headers: authenticated_header(user)
+
+      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body)['data']['id']).to eq(user.id)
+    end
+  end
+
   describe 'POST /' do
     it 'response with user coins' do
       post api_v1_coin_path, headers: authenticated_header(user), params: {
@@ -20,7 +29,6 @@ RSpec.describe 'Api::V1::Coins', type: :request do
       }
 
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)).to have_key('data')
       expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['symbol']).to eq('U-SYM')
       expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['name']).to eq('unique-coin-name')
       expect(JSON.parse(response.body)['included'][0]['attributes']['amount']).to eq(500.5)
@@ -44,7 +52,6 @@ RSpec.describe 'Api::V1::Coins', type: :request do
       }
 
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)).to have_key('data')
       expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['symbol']).to eq('SYM')
       expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['name']).to eq('coin-name')
       expect(JSON.parse(response.body)['included'][0]['attributes']['amount']).to eq(100.5)

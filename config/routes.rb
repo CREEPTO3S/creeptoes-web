@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'auth/login'
       post 'auth/signup'
+
+      get 'coin', to: 'coin#index'
       post 'coin', to: 'coin#create'
     end
   end

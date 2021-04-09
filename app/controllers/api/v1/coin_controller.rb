@@ -3,6 +3,10 @@ module Api
     class CoinController < ApplicationController
       before_action :authenticate_user
 
+      def index
+        render json: serialized_user
+      end
+
       def create
         ActiveRecord::Base.transaction do
           coin = Coin.new(symbol: coin_params[:symbol], name: coin_params[:name])
