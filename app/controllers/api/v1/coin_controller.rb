@@ -18,12 +18,12 @@ module Api
 
           user_coin = UserCoin.find_by(user: current_user, coin: coin)
 
-          unless user_coin
+          if user_coin
+            user_coin.update(amount: params[:amount])
+          else
             user_coin = UserCoin.new(user: current_user, coin: coin, amount: params[:amount])
             user_coin.save!
           end
-
-          user_coin.update(amount: params[:amount])
         end
 
         render json: serialized_user, status: :created
