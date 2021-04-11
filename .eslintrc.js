@@ -19,4 +19,11 @@ module.exports = {
   ],
   rules: {
   },
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'config/webpack/custom.js',
+      },
+    },
+  },
 };
