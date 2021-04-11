@@ -1,7 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { FourOFour } from '@pages';
 
 const App = () => (
-  <h1>{window.location.pathname}</h1>
+  <Router>
+    <Switch>
+      <Route path="*">
+        <FourOFour />
+      </Route>
+    </Switch>
+  </Router>
 );
 
 export default App;

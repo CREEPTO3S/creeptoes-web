@@ -8,6 +8,7 @@ module.exports = {
     ],
     alias: {
       '@root': path.resolve(__dirname, '..', '..', 'app/javascript/react'),
+      '@pages': path.resolve(__dirname, '..', '..', 'app/javascript/react/pages'),
     },
   },
 };
