@@ -15,5 +15,5 @@
 class CoinSerializer
   include JSONAPI::Serializer
 
-  attributes :symbol, :name
+  attributes :symbol, :name, :amount
 end

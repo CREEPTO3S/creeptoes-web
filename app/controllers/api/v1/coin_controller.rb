@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_user
 
       def index
-        render json: serialized_user_coin(current_user.user_coins)
+        render json: serialized_coin(current_user.coins.select('*, user_coins.amount as amount'))
       end
 
       def create
@@ -45,6 +45,10 @@ module Api
 
       def coin_params
         params.fetch(:coin, {}).permit(:symbol, :name)
+      end
+
+      def serialized_coin(coin)
+        CoinSerializer.new(coin).serializable_hash
       end
 
       def serialized_user_coin(user_coin)
