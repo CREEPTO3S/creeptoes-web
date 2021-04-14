@@ -10,16 +10,32 @@ RSpec.describe 'Api::V1::Coins', type: :request do
   let(:user) { User.create(username: 'username', email: 'test@gmail.com', password: '123456', password_confirmation: '123456') }
 
   describe 'GET /' do
-    it 'response with user coins' do
+    it 'response with empty array' do
       get api_v1_coin_path, headers: authenticated_header(user)
 
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)['data']['id']).to eq(user.id)
+      expect(JSON.parse(response.body)['data']).to eq([])
+    end
+
+    it 'response with user coins' do
+      post api_v1_coin_path, headers: authenticated_header(user), params: {
+        coin: {
+          symbol: 'U-SYM',
+          name: 'unique-coin-name'
+        },
+        amount: 500.5
+      }
+      get api_v1_coin_path, headers: authenticated_header(user)
+
+      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body)['data'][0]['attributes']['coin']['symbol']).to eq('U-SYM')
+      expect(JSON.parse(response.body)['data'][0]['attributes']['coin']['name']).to eq('unique-coin-name')
+      expect(JSON.parse(response.body)['data'][0]['attributes']['amount']).to eq(500.5)
     end
   end
 
   describe 'POST /' do
-    it 'response with user coins' do
+    it 'response with coin' do
       post api_v1_coin_path, headers: authenticated_header(user), params: {
         coin: {
           symbol: 'U-SYM',
@@ -29,12 +45,12 @@ RSpec.describe 'Api::V1::Coins', type: :request do
       }
 
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['symbol']).to eq('U-SYM')
-      expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['name']).to eq('unique-coin-name')
-      expect(JSON.parse(response.body)['included'][0]['attributes']['amount']).to eq(500.5)
+      expect(JSON.parse(response.body)['data']['attributes']['coin']['symbol']).to eq('U-SYM')
+      expect(JSON.parse(response.body)['data']['attributes']['coin']['name']).to eq('unique-coin-name')
+      expect(JSON.parse(response.body)['data']['attributes']['amount']).to eq(500.5)
     end
 
-    it 'response with updated user coins when sent existed combination of symbol, name and user' do
+    it 'response with updated coin when sent existed combination of symbol, name and user' do
       post api_v1_coin_path, headers: authenticated_header(user), params: {
         coin: {
           symbol: 'SYM',
@@ -52,9 +68,9 @@ RSpec.describe 'Api::V1::Coins', type: :request do
       }
 
       expect(response).to have_http_status(:created)
-      expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['symbol']).to eq('SYM')
-      expect(JSON.parse(response.body)['included'][0]['attributes']['coin']['name']).to eq('coin-name')
-      expect(JSON.parse(response.body)['included'][0]['attributes']['amount']).to eq(100.5)
+      expect(JSON.parse(response.body)['data']['attributes']['coin']['symbol']).to eq('SYM')
+      expect(JSON.parse(response.body)['data']['attributes']['coin']['name']).to eq('coin-name')
+      expect(JSON.parse(response.body)['data']['attributes']['amount']).to eq(100.5)
     end
 
     it 'response with error messages when sent empty params' do

@@ -4,19 +4,18 @@ module Api
       before_action :authenticate_user
 
       def index
-        render json: serialized_user
+        render json: serialized_user_coin(current_user.user_coins)
       end
 
       def create
-        ActiveRecord::Base.transaction do
-          coin = Coin.find_by(symbol: coin_params[:symbol], name: coin_params[:name])
+        coin = Coin.find_by(symbol: coin_params[:symbol], name: coin_params[:name])
+        user_coin = UserCoin.find_by(user: current_user, coin: coin)
 
+        ActiveRecord::Base.transaction do
           unless coin
             coin = Coin.new(symbol: coin_params[:symbol], name: coin_params[:name])
             coin.save!
           end
-
-          user_coin = UserCoin.find_by(user: current_user, coin: coin)
 
           if user_coin
             user_coin.update(amount: params[:amount])
@@ -26,7 +25,7 @@ module Api
           end
         end
 
-        render json: serialized_user, status: :created
+        render json: serialized_user_coin(user_coin), status: :created
       rescue ActiveRecord::RecordInvalid => e
         render json: { errors: [e] }, status: :unprocessable_entity
       end
@@ -48,9 +47,8 @@ module Api
         params.fetch(:coin, {}).permit(:symbol, :name)
       end
 
-      def serialized_user
-        options = { include: [:user_coins] }
-        UserSerializer.new(current_user, options).serializable_hash
+      def serialized_user_coin(user_coin)
+        UserCoinSerializer.new(user_coin).serializable_hash
       end
     end
   end
