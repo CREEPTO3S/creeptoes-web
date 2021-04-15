@@ -106,6 +106,10 @@ Thus, **CREEPTOES** is born.
   ```sh
   ./bin/rspec
   ```
+* Jest
+  ```sh
+  yarn test
+  ```
 
 <!-- CONTRIBUTING -->
 ## Contributing
