@@ -1,6 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+if [ $(dpkg-query -W -f='${Status}' cowsay 2>/dev/null | grep -c "ok installed") -eq 0 ];
+then
+  sudo apt install cowsay;
+fi
+
 cowsay yarn eslint --fix
 yarn eslint --fix
 

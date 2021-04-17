@@ -1,12 +1,11 @@
 module.exports = {
-  testPathIgnorePatterns: [
-    '<rootDir>/config/webpack/test.js',
+  testMatch: [
+    '<rootDir>/spec/javascript/**/?(*.)+(test).[jt]s?(x)',
   ],
   setupFilesAfterEnv: [
-    './spec/javascript/setup_tests.js',
+    '<rootDir>/spec/javascript/setup_tests.js',
   ],
   coveragePathIgnorePatterns: [
-    '<rootDir>/node_modules',
     '<rootDir>/app/javascript/react/pages/index.js',
   ],
   moduleNameMapper: {
