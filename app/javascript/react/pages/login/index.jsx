@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from '@layouts';
+import PropTypes from 'prop-types';
+import { Container, Draggable } from '@layouts';
 import { Input, Button } from '@components';
 import style from './style';
 
@@ -9,26 +10,38 @@ const {
   Form,
 } = style;
 
-const Login = () => (
+const LoginPage = ({ constraintsRef }) => (
   <Container>
     <Columns className="columns is-flex is-vcentered is-centered">
       <Column className="column is-half">
-        <Form className="box">
-          <Input
-            type="email"
-            name="email"
-            icon="envelope"
-          />
-          <Input
-            type="password"
-            name="password"
-            icon="lock"
-          />
-          <Button text="Login" variant="is-success" />
-        </Form>
+        <Draggable constraintsRef={constraintsRef}>
+          <Form className="box">
+            <Input
+              type="email"
+              name="email"
+              icon="envelope"
+            />
+            <Input
+              type="password"
+              name="password"
+              icon="lock"
+            />
+            <Button text="Login" variant="is-success" />
+          </Form>
+        </Draggable>
       </Column>
     </Columns>
   </Container>
 );
 
-export default Login;
+LoginPage.propTypes = {
+  constraintsRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  })]),
+};
+
+LoginPage.defaultProps = {
+  constraintsRef: null,
+};
+
+export default LoginPage;

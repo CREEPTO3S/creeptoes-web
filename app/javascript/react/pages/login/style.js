@@ -5,7 +5,15 @@ const style = {
     min-height: 100vh;
   `,
   Column: styled.div``,
-  Form: styled.form``,
+  Form: styled.form`
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+    
+    label {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
+  `,
 };
 
 export default style;

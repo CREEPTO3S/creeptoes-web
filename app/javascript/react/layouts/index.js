@@ -1,6 +1,9 @@
+import CleanWrapper from '@layouts/clean-wrapper';
 import Container from '@layouts/container';
+import Draggable from '@layouts/draggable';
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
+  CleanWrapper,
   Container,
+  Draggable,
 };
