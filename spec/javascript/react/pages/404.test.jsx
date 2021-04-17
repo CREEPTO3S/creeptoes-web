@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import FourOFour from '@pages/404';
+import { FourOFour } from '@pages';
 
 describe('#render', () => {
   it('renders properly', () => {

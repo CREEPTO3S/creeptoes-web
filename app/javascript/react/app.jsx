@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { FourOFour } from '@pages';
+import { Login, FourOFour } from '@pages';
 
 const App = () => (
   <Router>
     <Switch>
+      <Route path="/login">
+        <Login />
+      </Route>
       <Route path="*">
         <FourOFour />
       </Route>
