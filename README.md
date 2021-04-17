@@ -1,4 +1,5 @@
 <!-- PROJECT SHIELDS -->
+[![Build Status](https://travis-ci.com/CREEPTO3S/creeptoes-web.svg?branch=main)](https://travis-ci.com/CREEPTO3S/creeptoes-web)
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
