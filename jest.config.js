@@ -9,6 +9,7 @@ module.exports = {
     '<rootDir>/app/javascript/react/layouts/index.js',
     '<rootDir>/app/javascript/react/pages/index.js',
     '<rootDir>/app/javascript/react/components/index.js',
+    '<rootDir>/app/javascript/react/vendors/index.js',
   ],
   moduleNameMapper: {
     '@root/(.*)': '<rootDir>/app/javascript/react/$1',
@@ -19,5 +20,7 @@ module.exports = {
     '@components/(.*)': '<rootDir>/app/javascript/react/components/$1',
     '@components': '<rootDir>/app/javascript/react/components/index.js',
     '@helpers': '<rootDir>/app/javascript/react/helpers/index.js',
+    '@vendors/(.*)': '<rootDir>/app/javascript/react/vendors/$1',
+    '@vendors': '<rootDir>/app/javascript/react/vendors/index.js',
   },
 };
