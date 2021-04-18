@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { CleanWrapper } from '@layouts';
+import { Container } from '@layouts';
 
 describe('#render', () => {
   it('renders properly', () => {
-    const { container } = render(<CleanWrapper><div id="test">HELLO</div></CleanWrapper>);
+    const { container } = render(<Container><div id="test">HELLO</div></Container>);
 
     expect(container.querySelector('div #test').innerHTML).toEqual('HELLO');
   });

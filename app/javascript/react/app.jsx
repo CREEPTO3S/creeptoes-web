@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { CleanWrapper } from '@layouts';
+import { Container } from '@layouts';
 import { FourOFour } from '@pages';
 
 const App = () => {
   const constraintsRef = useRef(null);
 
   return (
-    <CleanWrapper innerRef={constraintsRef}>
+    <Container innerRef={constraintsRef}>
       <Router>
         <Switch>
           <Route path="*">
@@ -15,7 +15,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-    </CleanWrapper>
+    </Container>
   );
 };
 

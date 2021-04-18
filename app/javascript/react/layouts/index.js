@@ -1,7 +1,7 @@
-import CleanWrapper from '@layouts/clean-wrapper';
+import Container from '@layouts/container';
 import Window from '@layouts/window';
 
 export {
-  CleanWrapper,
+  Container,
   Window,
 };

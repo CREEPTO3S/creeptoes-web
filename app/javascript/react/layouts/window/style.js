@@ -9,7 +9,14 @@ const style = {
   TitleBar: styled.div``,
   TitleBartext: styled.div``,
   TitleBarControls: styled.div``,
-  Button: styled.button``,
+
+  Button: styled.button`
+    cursor: pointer;
+
+    &[aria-label=Help] {
+      cursor: help;
+    }
+  `,
 };
 
 export default style;

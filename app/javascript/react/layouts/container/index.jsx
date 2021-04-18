@@ -3,25 +3,25 @@ import PropTypes from 'prop-types';
 import style from './style';
 
 const {
-  Wrapper,
+  Container,
 } = style;
 
-const CleanWrapperLayout = ({ children, innerRef }) => (
-  <Wrapper ref={innerRef}>
+const ContainerLayout = ({ children, innerRef }) => (
+  <Container ref={innerRef}>
     {children}
-  </Wrapper>
+  </Container>
 );
 
-CleanWrapperLayout.propTypes = {
+ContainerLayout.propTypes = {
   children: PropTypes.element,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
     current: PropTypes.instanceOf(Element),
   })]),
 };
 
-CleanWrapperLayout.defaultProps = {
+ContainerLayout.defaultProps = {
   children: <></>,
   innerRef: null,
 };
 
-export default CleanWrapperLayout;
+export default ContainerLayout;

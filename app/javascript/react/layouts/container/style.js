@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 const style = {
-  Wrapper: styled.div`
+  Container: styled.div`
     min-height: 100vh;
+
+    .window-active {
+      z-index: 9999;
+    }
   `,
 };
 
