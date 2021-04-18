@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 const style = {
-  Container: styled.div`
-    min-height: 100vh;
-  `,
+  Container: styled.div``,
 };
 
 export default style;

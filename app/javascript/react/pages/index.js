@@ -1,7 +1,6 @@
-import Login from '@pages/login';
 import FourOFour from '@pages/404';
 
 export {
-  Login,
+  // eslint-disable-next-line import/prefer-default-export
   FourOFour,
 };
