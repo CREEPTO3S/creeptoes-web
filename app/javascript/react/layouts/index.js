@@ -1,7 +1,7 @@
 import CleanWrapper from '@layouts/clean-wrapper';
-import Draggable from '@layouts/draggable';
+import Window from '@layouts/window';
 
 export {
   CleanWrapper,
-  Draggable,
+  Window,
 };

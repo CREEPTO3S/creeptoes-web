@@ -5,9 +5,52 @@ exports[`#render renders properly 1`] = `
   <div
     class="sc-bdvvaa cWwyBq"
   >
-    <h1>
-      /
-    </h1>
+    <div
+      draggable="false"
+      style="user-select: none;"
+    >
+      <div
+        class="sc-gsDJrp fObuKD window"
+      >
+        <div
+          class="sc-hKwCoD title-bar"
+        >
+          <div
+            class="sc-eCImvq title-bar-text"
+          >
+            Error
+          </div>
+          <div
+            class="sc-jRQAMF title-bar-controls"
+          >
+            <button
+              aria-label="Minimize"
+              class="sc-gKckTs"
+              type="button"
+            />
+            <button
+              aria-label="Maximize"
+              class="sc-gKckTs"
+              type="button"
+            />
+            <button
+              aria-label="Close"
+              class="sc-gKckTs"
+              type="button"
+            />
+          </div>
+        </div>
+        <div
+          class="sc-dkPtyc window-body"
+        >
+          <p
+            class="sc-iCfLBT bCgVbS"
+          >
+            404 Not Found.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

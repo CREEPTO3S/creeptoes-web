@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CleanWrapper } from '@layouts';
+import { FourOFour } from '@pages';
 
 const App = () => {
   const constraintsRef = useRef(null);
@@ -10,7 +11,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="*">
-            <h1>{window.location.pathname}</h1>
+            <FourOFour constraintsRef={constraintsRef} />
           </Route>
         </Switch>
       </Router>
