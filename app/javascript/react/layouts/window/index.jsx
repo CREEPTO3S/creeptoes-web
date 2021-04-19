@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import XPErrorPNG from '@images/xp_error.png';
+import XPWarningPNG from '@images/xp_warning.png';
+import { WINDOW_TYPE_ENUMS } from '@helpers';
 import style from './style';
 
 const {
@@ -9,13 +12,15 @@ const {
   TitleBar,
   TitleBartext,
   TitleBarControls,
-  Button,
+  TitleBarButton,
+  Img,
 } = style;
 
 const WindowLayout = ({
   children,
   constraintsRef,
   title,
+  type,
   handleHelp,
 }) => {
   const [isShown, setIsShown] = useState(true);
@@ -33,6 +38,18 @@ const WindowLayout = ({
   };
 
   const handleClose = () => setIsShown(false);
+
+  const renderIcon = () => {
+    if (type === WINDOW_TYPE_ENUMS.warning) {
+      return <Img className="warning" src={XPWarningPNG} draggable={false} />;
+    }
+
+    if (type === WINDOW_TYPE_ENUMS.error) {
+      return <Img className="error" src={XPErrorPNG} draggable={false} />;
+    }
+
+    return null;
+  };
 
   useEffect(() => {
     const window = document.querySelector('#window');
@@ -63,19 +80,20 @@ const WindowLayout = ({
         <TitleBar className="title-bar">
           <TitleBartext className="title-bar-text">{title}</TitleBartext>
           <TitleBarControls className="title-bar-controls">
-            <Button
+            <TitleBarButton
               type="button"
               aria-label="Help"
               onClick={handleHelp}
             />
-            <Button
+            <TitleBarButton
               type="button"
               aria-label="Close"
               onClick={handleClose}
             />
           </TitleBarControls>
         </TitleBar>
-        <WindowBody className="window-body">
+        <WindowBody className="window-body" type={type}>
+          {renderIcon()}
           {children}
         </WindowBody>
       </Window>
@@ -89,6 +107,7 @@ WindowLayout.propTypes = {
     current: PropTypes.instanceOf(Element),
   })]),
   title: PropTypes.string,
+  type: PropTypes.string,
   handleHelp: PropTypes.func,
 };
 
@@ -96,6 +115,7 @@ WindowLayout.defaultProps = {
   children: <></>,
   constraintsRef: null,
   title: '',
+  type: '',
   handleHelp: null,
 };
 

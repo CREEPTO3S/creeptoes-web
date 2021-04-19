@@ -8,6 +8,7 @@ describe('#render', () => {
     const { container } = render(<FourOFour />);
 
     expect(container.querySelector('.title-bar-text').innerHTML).toEqual('Error');
+    expect(container.querySelector('.window-body img.error')).toBeInTheDocument();
     expect(container.querySelector('.window-body p').innerHTML).toEqual('404 Not Found.');
   });
 });

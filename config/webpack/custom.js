@@ -13,6 +13,7 @@ module.exports = {
       '@components': path.resolve(__dirname, '..', '..', 'app/javascript/react/components'),
       '@helpers': path.resolve(__dirname, '..', '..', 'app/javascript/react/helpers'),
       '@vendors': path.resolve(__dirname, '..', '..', 'app/javascript/react/vendors'),
+      '@images': path.resolve(__dirname, '..', '..', 'app/assets/images'),
     },
   },
 };

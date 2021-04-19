@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Window } from '@layouts';
+import { WINDOW_TYPE_ENUMS } from '@helpers';
 import style from './style';
 
 const { Text } = style;
@@ -12,6 +13,7 @@ const FourOFour = ({ constraintsRef, setWindows }) => {
     <Window
       constraintsRef={constraintsRef}
       title="Error"
+      type={WINDOW_TYPE_ENUMS.error}
       handleHelp={handleHelp}
     >
       <Text>404 Not Found.</Text>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { WINDOW_TYPE_ENUMS } from '@helpers';
 
 import { Window } from '@layouts';
 
@@ -18,6 +19,27 @@ describe('#render', () => {
 
     expect(global.getComputedStyle(window).top).toEqual('calc(50% - 0px)');
     expect(global.getComputedStyle(window).left).toEqual('calc(50% - 0px)');
+  });
+});
+
+describe('#renderIcon', () => {
+  it('renders warning', () => {
+    const { container } = render(<Window title="title bar" type={WINDOW_TYPE_ENUMS.warning}><div id="test">HELLO</div></Window>);
+
+    expect(container.querySelector('.window-body img.warning')).toBeInTheDocument();
+  });
+
+  it('renders error', () => {
+    const { container } = render(<Window title="title bar" type={WINDOW_TYPE_ENUMS.error}><div id="test">HELLO</div></Window>);
+
+    expect(container.querySelector('.window-body img.error')).toBeInTheDocument();
+  });
+
+  it('renders no icon', () => {
+    const { container } = render(<Window title="title bar"><div id="test">HELLO</div></Window>);
+
+    expect(container.querySelector('.window-body img.warning')).not.toBeInTheDocument();
+    expect(container.querySelector('.window-body img.error')).not.toBeInTheDocument();
   });
 });
 

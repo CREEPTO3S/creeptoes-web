@@ -12,6 +12,7 @@ module.exports = {
     '<rootDir>/app/javascript/react/vendors/index.js',
   ],
   moduleNameMapper: {
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '@root/(.*)': '<rootDir>/app/javascript/react/$1',
     '@layouts/(.*)': '<rootDir>/app/javascript/react/layouts/$1',
     '@layouts': '<rootDir>/app/javascript/react/layouts/index.js',
@@ -22,5 +23,6 @@ module.exports = {
     '@helpers': '<rootDir>/app/javascript/react/helpers/index.js',
     '@vendors/(.*)': '<rootDir>/app/javascript/react/vendors/$1',
     '@vendors': '<rootDir>/app/javascript/react/vendors/index.js',
+    '@images/(.*)': '<rootDir>/app/assets/images/$1',
   },
 };
