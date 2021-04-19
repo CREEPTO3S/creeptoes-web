@@ -91,4 +91,10 @@ describe('#handleHelp', () => {
 
     expect(handleHelp).toHaveBeenCalled();
   });
+
+  it('has no handleHelp', () => {
+    const { container } = render(<Window title="title bar"><div id="test">HELLO</div></Window>);
+
+    expect(container.querySelector('button[aria-label="Help"]')).not.toBeInTheDocument();
+  });
 });

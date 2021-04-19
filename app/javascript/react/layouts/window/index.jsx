@@ -80,11 +80,13 @@ const WindowLayout = ({
         <TitleBar className="title-bar">
           <TitleBartext className="title-bar-text">{title}</TitleBartext>
           <TitleBarControls className="title-bar-controls">
-            <TitleBarButton
-              type="button"
-              aria-label="Help"
-              onClick={handleHelp}
-            />
+            {handleHelp && (
+              <TitleBarButton
+                type="button"
+                aria-label="Help"
+                onClick={handleHelp}
+              />
+            )}
             <TitleBarButton
               type="button"
               aria-label="Close"
