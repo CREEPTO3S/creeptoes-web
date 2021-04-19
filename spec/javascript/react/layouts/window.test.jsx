@@ -43,7 +43,7 @@ describe('#renderIcon', () => {
   });
 });
 
-describe('#handleClick', () => {
+describe('#handlePointerDown', () => {
   it('set z-index 9999 on active window', () => {
     const { container } = render(
       <>
@@ -56,12 +56,12 @@ describe('#handleClick', () => {
 
     expect(container.querySelector('.window-active')).not.toBeInTheDocument();
 
-    fireEvent.mouseDown(windows[0]);
+    fireEvent.pointerDown(windows[0]);
 
     expect(windows[0].classList.contains('window-active')).toEqual(true);
     expect(windows[1].classList.contains('window-active')).toEqual(false);
 
-    fireEvent.mouseDown(windows[1]);
+    fireEvent.pointerDown(windows[1]);
 
     expect(windows[0].classList.contains('window-active')).toEqual(false);
     expect(windows[1].classList.contains('window-active')).toEqual(true);

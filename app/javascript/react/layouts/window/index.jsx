@@ -27,7 +27,7 @@ const WindowLayout = ({
   const [windowHeight, setWindowHeight] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
 
-  const handleClick = (e) => {
+  const handlePointerDown = (e) => {
     const windows = document.querySelectorAll('#window');
 
     windows.forEach((window) => {
@@ -74,7 +74,7 @@ const WindowLayout = ({
         top: `calc(50% - ${windowHeight / 2}px)`,
         left: `calc(50% - ${windowWidth / 2}px)`,
       }}
-      onMouseDown={handleClick}
+      onPointerDown={handlePointerDown}
     >
       <Window className="window">
         <TitleBar className="title-bar">
