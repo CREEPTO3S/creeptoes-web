@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { AVAILABLE_COMMANDS } from '@helpers';
 import style from './style';
 
 const {
@@ -40,8 +41,21 @@ const CommandPromptComponent = () => {
   useEffect(() => {
     if (prevCommandsLength && prevCommandsLength !== commands.length) {
       setResponses((prevState) => {
-        const newResponses = [...prevState];
-        newResponses[commands.length - 2] = `'${commands[commands.length - 2]}' is not recognized as an internal or external command,\noperable program or batch file.`;
+        const availableCommands = Object.entries(AVAILABLE_COMMANDS).map((cmd) => `${cmd[1].cmd} - ${cmd[1].desc}`).join('\n');
+        const command = commands[commands.length - 2];
+        let newResponses = [...prevState];
+        switch (command) {
+          case AVAILABLE_COMMANDS.clear.cmd:
+            setCommands(['']);
+            newResponses = [''];
+            break;
+          case AVAILABLE_COMMANDS.help.cmd:
+            newResponses[commands.length - 2] = availableCommands;
+            break;
+          default:
+            newResponses[commands.length - 2] = `'${command}' is not recognized as an internal or external command,\noperable program or batch file.`;
+            break;
+        }
 
         return newResponses;
       });
