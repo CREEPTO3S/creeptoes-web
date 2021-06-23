@@ -5,10 +5,8 @@ module Api
         user = User.find_by(email: login_params[:email])
 
         if user.present? && user.authenticate(login_params[:password])
-          serialized_user = UserSerializer.new(user).serializable_hash
-
           render json: {
-            **serialized_user,
+            **serialized_user(user),
             token: JwtService.encode({ id: user.id, username: user.username, email: user.email })
           }
         else
@@ -20,9 +18,7 @@ module Api
         user = User.new(signup_params)
 
         if user.save
-          serialized_user = UserSerializer.new(user).serializable_hash
-
-          render json: serialized_user.to_json, status: :created
+          render json: serialized_user(user).to_json, status: :created
         else
           render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
@@ -36,6 +32,10 @@ module Api
 
       def signup_params
         params.fetch(:auth, {}).permit(:username, :email, :password, :password_confirmation)
+      end
+
+      def serialized_user(user)
+        UserSerializer.new(user).serializable_hash
       end
     end
   end
